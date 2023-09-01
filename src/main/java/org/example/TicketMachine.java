@@ -1,3 +1,4 @@
+package org.example;
 /**
  * TicketMachine models a naive ticket machine that issues
  * flat-fare tickets.
@@ -6,7 +7,7 @@
  * to insert enough money before trying to print a ticket.
  * It also assumes that users enter sensible amounts.
  *
- * @author (Insert your name)
+ * @author (Kyle)
  * @version (Insert version number)
  */
 public class TicketMachine
@@ -30,6 +31,14 @@ public class TicketMachine
         total = 0;
     }
 
+    public TicketMachine()
+    {
+        price = 0;
+        balance = 0;
+        total = 0;
+    }
+
+
     /**
      * Return the price of a ticket.
      */
@@ -42,6 +51,19 @@ public class TicketMachine
      * Return the amount of money already inserted for the
      * next ticket.
      */
+
+    public int getTotal()
+    {
+        return total;
+    }
+
+    /**
+     * Display the price of a ticket on the console.
+     */
+    public void showPrice()
+    {
+        System.out.println("Der Preis eines Tickets ist CHF " + (double)price / 100);
+    }
     public int getBalance()
     {
         return balance;
@@ -55,6 +77,21 @@ public class TicketMachine
         balance += amount;
     }
 
+    public void setPrice(int newPrice)
+    {
+        if (newPrice >= 0) {
+            price = newPrice;
+        } else {
+            System.out.println("Ungültiger Preis. Der Preis muss größer oder gleich 0 sein.");
+        }
+    }
+
+    public int empty()
+    {
+        int earnings = total;
+        total = 0;
+        return earnings;
+    }
     /**
      * Print a ticket.
      * Update the total collected and
@@ -75,4 +112,5 @@ public class TicketMachine
         // Clear the balance.
         balance = 0;
     }
+
 }
